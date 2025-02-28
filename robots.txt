@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Sitemaps
+Sitemap: https://sakshamsharma.com.np/sitemap.xmlstat

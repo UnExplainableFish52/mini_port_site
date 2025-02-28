@@ -3,82 +3,176 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Writings - Saksham Sharma</title>
+    
+    <!-- SEO Meta Tags -->
+    <title>Writings & Blog Posts | Saksham Sharma</title>
+    <meta name="description" content="Explore Saksham Sharma's writings on programming, innovation, and technology. Insights on mindful coding, embracing challenges, and digital minimalism.">
+    <meta name="keywords" content="Saksham Sharma, programming blog, tech writing, coding articles, mindful programming, digital minimalism">
+    <meta name="author" content="Saksham Sharma">
+    <link rel="canonical" href="https://sakshamsharma.com.np/pages/writings.html">
+    
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://sakshamsharma.com.np/pages/writings.html">
+    <meta property="og:title" content="Writings & Blog Posts | Saksham Sharma">
+    <meta property="og:description" content="Explore Saksham Sharma's writings on programming, innovation, and technology. Insights on mindful coding, embracing challenges, and digital minimalism.">
+    <meta property="og:image" content="https://sakshamsharma.com.np/images/writing1.jpg">
+    
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Writings & Blog Posts | Saksham Sharma">
+    <meta name="twitter:description" content="Explore Saksham Sharma's writings on programming, innovation, and technology. Insights on mindful coding, embracing challenges, and digital minimalism.">
+    <meta name="twitter:image" content="https://sakshamsharma.com.np/images/writing1.jpg">
+    
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="../css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Blog",
+        "headline": "Saksham Sharma's Writings",
+        "description": "Thoughts, ideas, and reflections on technology, programming, and life",
+        "author": {
+            "@type": "Person",
+            "name": "Saksham Sharma",
+            "url": "https://sakshamsharma.com.np"
+        },
+        "blogPost": [
+            {
+                "@type": "BlogPosting",
+                "headline": "The Art of Mindful Programming",
+                "datePublished": "2025-02-20",
+                "articleBody": "In the chaos of deadlines and feature requests, we often forget the meditative aspect of programming...",
+                "image": "https://sakshamsharma.com.np/images/writing1.jpg",
+                "keywords": "Mindfulness, Coding, Productivity",
+                "timeRequired": "PT12M"
+            },
+            {
+                "@type": "BlogPosting",
+                "headline": "Embracing the Unknown",
+                "datePublished": "2025-02-15",
+                "articleBody": "Every new project brings its own set of uncertainties. Instead of fearing them...",
+                "image": "https://sakshamsharma.com.np/images/writing2.jpg",
+                "keywords": "Growth, Challenges, Learning",
+                "timeRequired": "PT15M"
+            },
+            {
+                "@type": "BlogPosting",
+                "headline": "Digital Minimalism",
+                "datePublished": "2025-02-10",
+                "articleBody": "In a world of endless notifications and digital noise, finding clarity becomes increasingly important...",
+                "image": "https://sakshamsharma.com.np/images/writing3.jpg",
+                "keywords": "Minimalism, Focus, Productivity",
+                "timeRequired": "PT18M"
+            }
+        ]
+    }
+    </script>
 </head>
 <body>
-    <nav class="navbar">
-        <div class="nav-brand">
-            <a href="../index.html">Saksham Sharma <span id="theme-toggle" class="theme-toggle"><i class="fas fa-sun"></i></span></a>
-        </div>
-        <div class="nav-links">
-            <a href="../index.html" class="nav-link">Home</a>
-            <a href="skills.html" class="nav-link">Skills</a>
-            <a href="experience.html" class="nav-link">Experience</a>
-            <a href="projects.html" class="nav-link">Projects</a>
-            <a href="writings.html" class="nav-link">Writings</a>
-            <a href="contact.html" class="nav-link">Contact</a>
-        </div>
-    </nav>
+    <header>
+        <nav class="navbar">
+            <div class="nav-brand">
+                <a href="../index.html">Saksham Sharma <span id="theme-toggle" class="theme-toggle"><i class="fas fa-sun" aria-hidden="true"></i></span></a>
+            </div>
+            <div class="nav-links">
+                <a href="../index.html" class="nav-link">Home</a>
+                <a href="skills.html" class="nav-link">Skills</a>
+                <a href="experience.html" class="nav-link">Experience</a>
+                <a href="projects.html" class="nav-link">Projects</a>
+                <a href="writings.html" class="nav-link" aria-current="page">Writings</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </div>
+        </nav>
+    </header>
 
     <main class="content">
         <div class="writings-container">
-            <h1 class="page-title">Writings</h1>
+            <div class="writings-header">
+                <h1 class="page-title">My Writings</h1>
+                <p class="writings-subtitle">Thoughts, ideas, and reflections on technology, programming, and life</p>
+            </div>
 
             <div class="writings-grid">
-                <article class="word-card">
-                    <header class="word-header">
-                        <h2>The Art of Mindful Programming</h2>
-                        <div class="word-meta">
-                            <span class="date">Feb 20, 2025</span>
-                            <span class="read-time">7 min read</span>
+                <article class="writing-card">
+                    <div class="writing-image-container">
+                        <img src="../images/writing1.jpg" alt="Mindful Programming concept showing clean code and meditation" class="writing-image" width="300" height="220">
+                        <div class="writing-category"><i class="fas fa-code" aria-hidden="true"></i> Programming</div>
+                    </div>
+                    <div class="writing-details">
+                        <div class="writing-meta">
+                            <span class="writing-date"><i class="far fa-calendar-alt" aria-hidden="true"></i> Feb 20, 2025</span>
+                            <span class="writing-time"><i class="far fa-clock" aria-hidden="true"></i> 12 min read</span>
                         </div>
-                    </header>
-                    <p class="word-excerpt">
-                        In the chaos of deadlines and feature requests, we often forget the meditative aspect of programming. When I write code, I try to enter a state of flow where each line is written with intention and purpose. It's not just about making things work; it's about crafting something beautiful and meaningful...
-                    </p>
-                    <div class="word-tags">
-                        <span class="tag">Mindfulness</span>
-                        <span class="tag">Programming</span>
-                        <span class="tag">Creativity</span>
+                        <h2 class="writing-title">The Art of Mindful Programming</h2>
+                        <p class="writing-excerpt">
+                            In the chaos of deadlines and feature requests, we often forget the meditative aspect of programming. When I write code, I try to enter a state of flow where each line is written with intention and purpose. It's not just about making things work; it's about crafting something beautiful and meaningful...
+                        </p>
+                        <div class="writing-tags" aria-label="Article tags">
+                            <span class="writing-tag">Mindfulness</span>
+                            <span class="writing-tag">Coding</span>
+                            <span class="writing-tag">Productivity</span>
+                        </div>
+                        <a href="#mindful-programming" class="read-more-btn">
+                            <span>Read Full Article</span>
+                            <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                        </a>
                     </div>
                 </article>
 
-                <article class="word-card">
-                    <header class="word-header">
-                        <h2>Embracing the Unknown</h2>
-                        <div class="word-meta">
-                            <span class="date">Feb 15, 2025</span>
-                            <span class="read-time">5 min read</span>
+                <article class="writing-card">
+                    <div class="writing-image-container">
+                        <img src="../images/writing2.jpg" alt="Concept of embracing uncertainty and growth" class="writing-image" width="300" height="220">
+                        <div class="writing-category"><i class="fas fa-lightbulb" aria-hidden="true"></i> Innovation</div>
+                    </div>
+                    <div class="writing-details">
+                        <div class="writing-meta">
+                            <span class="writing-date"><i class="far fa-calendar-alt" aria-hidden="true"></i> Feb 15, 2025</span>
+                            <span class="writing-time"><i class="far fa-clock" aria-hidden="true"></i> 15 min read</span>
                         </div>
-                    </header>
-                    <p class="word-excerpt">
-                        Every new project brings its own set of uncertainties. Instead of fearing them, I've learned to embrace these moments as opportunities for growth. The unknown is where innovation happens, where we push beyond our comfort zones and discover new possibilities...
-                    </p>
-                    <div class="word-tags">
-                        <span class="tag">Growth</span>
-                        <span class="tag">Learning</span>
-                        <span class="tag">Innovation</span>
+                        <h2 class="writing-title">Embracing the Unknown</h2>
+                        <p class="writing-excerpt">
+                            Every new project brings its own set of uncertainties. Instead of fearing them, I've learned to embrace these moments as opportunities for growth. The unknown is where innovation happens, where we push beyond our comfort zones and discover new possibilities...
+                        </p>
+                        <div class="writing-tags" aria-label="Article tags">
+                            <span class="writing-tag">Growth</span>
+                            <span class="writing-tag">Challenges</span>
+                            <span class="writing-tag">Learning</span>
+                        </div>
+                        <a href="#embracing-unknown" class="read-more-btn">
+                            <span>Read Full Article</span>
+                            <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                        </a>
                     </div>
                 </article>
 
-                <article class="word-card">
-                    <header class="word-header">
-                        <h2>Digital Minimalism</h2>
-                        <div class="word-meta">
-                            <span class="date">Feb 10, 2025</span>
-                            <span class="read-time">6 min read</span>
+                <article class="writing-card">
+                    <div class="writing-image-container">
+                        <img src="../images/writing3.jpg" alt="Digital minimalism concept showing simplified workspace" class="writing-image" width="300" height="220">
+                        <div class="writing-category"><i class="fas fa-balance-scale" aria-hidden="true"></i> Lifestyle</div>
+                    </div>
+                    <div class="writing-details">
+                        <div class="writing-meta">
+                            <span class="writing-date"><i class="far fa-calendar-alt" aria-hidden="true"></i> Feb 10, 2025</span>
+                            <span class="writing-time"><i class="far fa-clock" aria-hidden="true"></i> 18 min read</span>
                         </div>
-                    </header>
-                    <p class="word-excerpt">
-                        In a world of endless notifications and digital noise, finding clarity becomes increasingly important. I've been exploring the concept of digital minimalism, not just in design but in how we interact with technology. Sometimes, the most powerful solutions are the simplest ones...
-                    </p>
-                    <div class="word-tags">
-                        <span class="tag">Minimalism</span>
-                        <span class="tag">Technology</span>
-                        <span class="tag">Focus</span>
+                        <h2 class="writing-title">Digital Minimalism</h2>
+                        <p class="writing-excerpt">
+                            In a world of endless notifications and digital noise, finding clarity becomes increasingly important. I've been exploring the concept of digital minimalism, not just in design but in how we interact with technology. Sometimes, the most powerful solutions are the simplest ones...
+                        </p>
+                        <div class="writing-tags" aria-label="Article tags">
+                            <span class="writing-tag">Minimalism</span>
+                            <span class="writing-tag">Focus</span>
+                            <span class="writing-tag">Productivity</span>
+                        </div>
+                        <a href="#digital-minimalism" class="read-more-btn">
+                            <span>Read Full Article</span>
+                            <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                        </a>
                     </div>
                 </article>
             </div>
