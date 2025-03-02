@@ -1,0 +1,593 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Art of Mindful Programming - Saksham Sharma</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Internal CSS - Copy this entire style section -->
+    <style>
+        :root {
+            --primary-color: #5F9EA0;  /* Beautiful teal */
+            --accent-color: #E6E6FA;   /* Lavender */
+            --highlight-color: #00CED1; /* Cyan */
+            --bg-color: #1a1a1a;
+            --text-color: #ffffff;
+            --secondary-bg: #2a2a2a;
+            --transition: all 0.3s ease;
+        }
+
+        /* Light theme variables */
+        [data-theme="light"] {
+            --bg-color: #ffffff;
+            --text-color: #1a1a1a;
+            --secondary-bg: #f5f5f5;
+        }
+
+        /* Base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto Slab', serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            cursor: default;
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.3rem 2rem;
+            background-color: var(--secondary-bg);
+            border-bottom: 1px solid var(--highlight-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: auto;
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--accent-color);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: var(--transition);
+            padding: 0.3rem;
+            margin-left: 1rem;
+        }
+
+        .nav-brand a {
+            color: var(--highlight-color);
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .nav-link {
+            color: var(--accent-color);
+            text-decoration: none;
+            transition: var(--transition);
+            position: relative;
+            padding-bottom: 2px;
+            font-size: 0.95rem;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: var(--highlight-color);
+            transition: width 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+            box-shadow: 0 0 8px var(--highlight-color);
+        }
+
+        /* Theme toggle */
+        .theme-toggle {
+            cursor: pointer;
+            margin-left: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            transform: rotate(30deg);
+        }
+
+        /* Content Styles */
+        .content {
+            min-height: calc(100vh - 150px);
+            padding: 2.5rem 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* Article Styles */
+        .article-container {
+            background-color: var(--secondary-bg);
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            margin-bottom: 2rem;
+        }
+
+        .article-header {
+            padding: 2rem;
+            position: relative;
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            border-bottom: 1px solid var(--primary-color);
+        }
+
+        .article-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 1;
+        }
+
+        .article-header-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .article-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--highlight-color);
+        }
+
+        .article-meta {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .article-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            color: var(--accent-color);
+        }
+
+        .article-body {
+            padding: 2rem;
+            line-height: 1.8;
+        }
+
+        .article-body p {
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+        }
+
+        .article-body h2 {
+            color: var(--primary-color);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+
+        .article-body h3 {
+            color: var(--highlight-color);
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            font-size: 1.4rem;
+        }
+
+        .article-body ul, .article-body ol {
+            margin-bottom: 1.5rem;
+            padding-left: 2rem;
+        }
+
+        .article-body li {
+            margin-bottom: 0.5rem;
+        }
+
+        .article-body blockquote {
+            border-left: 3px solid var(--primary-color);
+            padding-left: 1.5rem;
+            margin: 1.5rem 0;
+            font-style: italic;
+            color: var(--accent-color);
+        }
+
+        .article-body code {
+            background-color: rgba(95, 158, 160, 0.1);
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: monospace;
+        }
+
+        .article-body pre {
+            background-color: var(--bg-color);
+            padding: 1rem;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin-bottom: 1.5rem;
+        }
+
+        .article-body pre code {
+            background-color: transparent;
+            padding: 0;
+        }
+
+        .article-body img {
+            max-width: 100%;
+            border-radius: 5px;
+            margin: 1.5rem 0;
+        }
+
+        .article-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-top: 2.5rem;
+        }
+
+        .article-tag {
+            background-color: rgba(95, 158, 160, 0.15);
+            color: var(--primary-color);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            transition: var(--transition);
+        }
+
+        .article-tag:hover {
+            background-color: rgba(95, 158, 160, 0.3);
+        }
+
+        .article-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(95, 158, 160, 0.2);
+        }
+
+        .nav-previous, .nav-next, .nav-back {
+            color: var(--accent-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: var(--transition);
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            background-color: rgba(95, 158, 160, 0.1);
+        }
+
+        .nav-previous:hover, .nav-next:hover, .nav-back:hover {
+            background-color: rgba(95, 158, 160, 0.2);
+            color: var(--highlight-color);
+        }
+
+        /* Footer Styles */
+        .footer {
+            text-align: center;
+            padding: 1rem 0;
+            background-color: var(--secondary-bg);
+            margin-top: 0.5rem;
+        }
+
+        .footer-content {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 0 4rem;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .mobile-menu-toggle {
+                display: block;
+            }
+            
+            .nav-brand {
+                width: 100%;
+                justify-content: space-between;
+            }
+            
+            .nav-links {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                flex-direction: column;
+                align-items: center;
+                background-color: var(--secondary-bg);
+                padding: 0;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.4s ease, padding 0.4s ease;
+                z-index: 10;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+                opacity: 0;
+            }
+            
+            .nav-links.active {
+                max-height: 300px;
+                padding: 1rem 0;
+                opacity: 1;
+            }
+            
+            .nav-link {
+                width: 100%;
+                text-align: center;
+                padding: 0.8rem 0;
+                border-bottom: 1px solid rgba(95, 158, 160, 0.1);
+            }
+            
+            .nav-link:last-child {
+                border-bottom: none;
+            }
+            
+            .nav-link::after {
+                bottom: 5px;
+            }
+
+            .article-title {
+                font-size: 2rem;
+            }
+            
+            .article-meta {
+                gap: 1rem;
+            }
+            
+            .article-body {
+                padding: 1.5rem;
+            }
+            
+            .article-navigation {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .nav-previous, .nav-next, .nav-back {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-brand">
+            <a href="../../index.html">Saksham Sharma <span id="theme-toggle" class="theme-toggle"><i class="fas fa-sun"></i></span></a>
+            <button class="mobile-menu-toggle" aria-label="Toggle navigation menu">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        <div class="nav-links">
+            <a href="../../index.html" class="nav-link">Home</a>
+            <a href="../skills.html" class="nav-link">Skills</a>
+            <a href="../experience.html" class="nav-link">Experience</a>
+            <a href="../projects.html" class="nav-link">Projects</a>
+            <a href="../writings.html" class="nav-link active">Writings</a>
+            <a href="../contact.html" class="nav-link">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="content">
+        <article class="article-container">
+            <!-- Article Header -->
+            <div class="article-header" style="background-image: url('../../images/writing1.jpg');">
+                <div class="article-header-content">
+                    <h1 class="article-title">The Art of Mindful Programming</h1>
+                    <div class="article-meta">
+                        <span><i class="far fa-calendar-alt"></i> Feb 20, 2025</span>
+                        <span><i class="fas fa-code"></i> Programming</span>
+                        <!-- Philosophy
+fas fa-brain - Perfect for deep thinking and philosophical concepts
+fas fa-lightbulb - Represents ideas and enlightenment
+fas fa-book-open - Good for philosophical references and wisdom
+Casual Talks
+fas fa-comments - Represents conversation and dialogue
+fas fa-coffee - Perfect for casual, relaxed discussions
+fas fa-users - Good for social commentary or group discussions
+Stream of Consciousness
+fas fa-feather - Represents flowing, free-form writing
+fas fa-wind - Symbolizes the natural flow of thoughts
+fas fa-pen-fancy - Good for creative, expressive writing -->
+                        <span><i class="far fa-clock"></i> 12 min read</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Article Body -->
+            <div class="article-body">
+                <p>In the chaos of deadlines and feature requests, we often forget the meditative aspect of programming. When I write code, I try to enter a state of flow where each line is written with intention and purpose. It's not just about making things work; it's about crafting something beautiful and meaningful.</p>
+                
+                <h2>Finding Flow in Code</h2>
+                <p>Flow state, as described by psychologist Mihály Csíkszentmihályi, is a mental state in which a person is fully immersed in an activity, experiencing energized focus, full involvement, and enjoyment. For programmers, this state is particularly valuable. When we're in flow, we can solve complex problems more effectively, write more elegant code, and enjoy the process deeply.</p>
+                
+                <blockquote>
+                    "The best moments usually occur when a person's body or mind is stretched to its limits in a voluntary effort to accomplish something difficult and worthwhile." — Mihály Csíkszentmihályi
+                </blockquote>
+                
+                <p>Achieving flow in programming requires the right balance of challenge and skill. If the task is too difficult, we become anxious; if it's too easy, we become bored. Finding that sweet spot where we're pushing our abilities without becoming overwhelmed is key.</p>
+                
+                <h3>Strategies for Mindful Coding</h3>
+                <ul>
+                    <li><strong>Minimize distractions:</strong> Set aside blocks of time where you can code without interruptions.</li>
+                    <li><strong>Clear intentions:</strong> Know what you're trying to accomplish before diving in.</li>
+                    <li><strong>Embrace constraints:</strong> Sometimes limitations can foster creativity.</li>
+                    <li><strong>Take breaks:</strong> Regular intervals of rest help maintain focus when you return.</li>
+                    <li><strong>Practice deliberate coding:</strong> Think about each line you write and why you're writing it that way.</li>
+                </ul>
+                
+                <h2>Code as Craft</h2>
+                <p>Viewing programming as a craft rather than just a means to an end changes our relationship with code. Craftspeople pay attention to detail, take pride in their work, and continually refine their approach. They see beauty in functional simplicity and elegance in solving complex problems with minimal resources.</p>
+                
+                <p>Here's an example of how we might refactor a function to be more elegant:</p>
+                
+                <pre><code>// Before refactoring
+function calculateTotal(items) {
+  let total = 0;
+  for (let i = 0; i < items.length; i++) {
+    total += items[i].price * items[i].quantity;
+  }
+  return total;
+}
+
+// After refactoring
+function calculateTotal(items) {
+  return items.reduce((total, item) => total + (item.price * item.quantity), 0);
+}</code></pre>
+                
+                <p>The refactored version isn't just shorter; it's more declarative, focusing on what we want to achieve rather than how to achieve it. This kind of mindful refactoring can bring joy to programming.</p>
+                
+                <h2>The Bigger Picture</h2>
+                <p>Mindful programming isn't just about writing better code; it's about enjoying the process and taking care of your mental well-being as a developer. By approaching our craft with intention and awareness, we create higher quality software while also preserving our passion for the art of programming.</p>
+                
+                <p>Remember that every project, no matter how mundane it might seem, is an opportunity to practice mindfulness and craftsmanship. The joy isn't just in completing the task, but in how we approach it.</p>
+                
+                <!-- Article Tags -->
+                <div class="article-tags">
+                    <span class="article-tag">Mindfulness</span>
+                    <span class="article-tag">Coding</span>
+                    <span class="article-tag">Productivity</span>
+                    <span class="article-tag">Flow State</span>
+                </div>
+                
+                <!-- Article Navigation -->
+                <div class="article-navigation">
+                    <a href="/pages/writings/writing2.html" class="nav-previous"><i class="fas fa-arrow-left"></i> Previous Writing</a>
+                    <a href="../writings.html" class="nav-back"><i class="fas fa-th-large"></i> All Writings</a>
+                    <a href="writing1.html" class="nav-next">Next Writing <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2025 Saksham Sharma | All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Theme Toggle Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // DOM Elements
+            const themeToggle = document.getElementById('theme-toggle');
+            const iconElement = themeToggle.querySelector('i');
+            const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+            const navLinks = document.querySelector('.nav-links');
+            
+            // Check if user previously set a theme preference
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme) {
+                document.body.setAttribute('data-theme', savedTheme);
+                updateIcon(savedTheme === 'light', iconElement);
+            }
+            
+            // Toggle theme when clicked
+            themeToggle.addEventListener('click', function() {
+                const currentTheme = document.body.getAttribute('data-theme');
+                const newTheme = currentTheme === 'light' ? '' : 'light';
+                
+                document.body.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+                
+                updateIcon(newTheme === 'light', iconElement);
+            });
+            
+            // Function to update icon based on theme
+            function updateIcon(isLight, icon) {
+                if (isLight) {
+                    icon.classList.remove('fa-sun');
+                    icon.classList.add('fa-moon');
+                } else {
+                    icon.classList.remove('fa-moon');
+                    icon.classList.add('fa-sun');
+                }
+            }
+            
+            // Mobile menu toggle functionality
+            if (mobileMenuToggle) {
+                mobileMenuToggle.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    navLinks.classList.toggle('active');
+                    
+                    const icon = mobileMenuToggle.querySelector('i');
+                    if (icon.classList.contains('fa-bars')) {
+                        icon.classList.remove('fa-bars');
+                        icon.classList.add('fa-times');
+                    } else {
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
+                });
+                
+                // Close menu when clicking outside
+                document.addEventListener('click', function(event) {
+                    const isClickInsideNav = navLinks.contains(event.target);
+                    const isClickOnToggle = mobileMenuToggle.contains(event.target);
+                    
+                    if (!isClickInsideNav && !isClickOnToggle && navLinks.classList.contains('active')) {
+                        navLinks.classList.remove('active');
+                        const icon = mobileMenuToggle.querySelector('i');
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
+                });
+                
+                // Close menu when clicking on a link
+                navLinks.querySelectorAll('.nav-link').forEach(link => {
+                    link.addEventListener('click', function() {
+                        navLinks.classList.remove('active');
+                        const icon = mobileMenuToggle.querySelector('i');
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    });
+                });
+            }
+        });
+    </script>
+</body>
+</html>

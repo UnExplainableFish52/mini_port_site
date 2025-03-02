@@ -1,0 +1,571 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Art of Mindful Programming - Saksham Sharma</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Internal CSS - Copy this entire style section -->
+    <style>
+        :root {
+            --primary-color: #5F9EA0;  /* Beautiful teal */
+            --accent-color: #E6E6FA;   /* Lavender */
+            --highlight-color: #00CED1; /* Cyan */
+            --bg-color: #1a1a1a;
+            --text-color: #ffffff;
+            --secondary-bg: #2a2a2a;
+            --transition: all 0.3s ease;
+        }
+
+        /* Light theme variables */
+        [data-theme="light"] {
+            --bg-color: #ffffff;
+            --text-color: #1a1a1a;
+            --secondary-bg: #f5f5f5;
+        }
+
+        /* Base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto Slab', serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            cursor: default;
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.3rem 2rem;
+            background-color: var(--secondary-bg);
+            border-bottom: 1px solid var(--highlight-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: auto;
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--accent-color);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: var(--transition);
+            padding: 0.3rem;
+            margin-left: 1rem;
+        }
+
+        .nav-brand a {
+            color: var(--highlight-color);
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .nav-link {
+            color: var(--accent-color);
+            text-decoration: none;
+            transition: var(--transition);
+            position: relative;
+            padding-bottom: 2px;
+            font-size: 0.95rem;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: var(--highlight-color);
+            transition: width 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+            box-shadow: 0 0 8px var(--highlight-color);
+        }
+
+        /* Theme toggle */
+        .theme-toggle {
+            cursor: pointer;
+            margin-left: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            transform: rotate(30deg);
+        }
+
+        /* Content Styles */
+        .content {
+            min-height: calc(100vh - 150px);
+            padding: 2.5rem 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* Article Styles */
+        .article-container {
+            background-color: var(--secondary-bg);
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            margin-bottom: 2rem;
+        }
+
+        .article-header {
+            padding: 2rem;
+            position: relative;
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            border-bottom: 1px solid var(--primary-color);
+        }
+
+        .article-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 1;
+        }
+
+        .article-header-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .article-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--highlight-color);
+        }
+
+        .article-meta {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .article-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            color: var(--accent-color);
+        }
+
+        .article-body {
+            padding: 2rem;
+            line-height: 1.8;
+        }
+
+        .article-body p {
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+        }
+
+        .article-body h2 {
+            color: var(--primary-color);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+
+        .article-body h3 {
+            color: var(--highlight-color);
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            font-size: 1.4rem;
+        }
+
+        .article-body ul, .article-body ol {
+            margin-bottom: 1.5rem;
+            padding-left: 2rem;
+        }
+
+        .article-body li {
+            margin-bottom: 0.5rem;
+        }
+
+        .article-body blockquote {
+            border-left: 3px solid var(--primary-color);
+            padding-left: 1.5rem;
+            margin: 1.5rem 0;
+            font-style: italic;
+            color: var(--accent-color);
+        }
+
+        .article-body code {
+            background-color: rgba(95, 158, 160, 0.1);
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: monospace;
+        }
+
+        .article-body pre {
+            background-color: var(--bg-color);
+            padding: 1rem;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin-bottom: 1.5rem;
+        }
+
+        .article-body pre code {
+            background-color: transparent;
+            padding: 0;
+        }
+
+        .article-body img {
+            max-width: 100%;
+            border-radius: 5px;
+            margin: 1.5rem 0;
+        }
+
+        .article-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-top: 2.5rem;
+        }
+
+        .article-tag {
+            background-color: rgba(95, 158, 160, 0.15);
+            color: var(--primary-color);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            transition: var(--transition);
+        }
+
+        .article-tag:hover {
+            background-color: rgba(95, 158, 160, 0.3);
+        }
+
+        .article-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(95, 158, 160, 0.2);
+        }
+
+        .nav-previous, .nav-next, .nav-back {
+            color: var(--accent-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: var(--transition);
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            background-color: rgba(95, 158, 160, 0.1);
+        }
+
+        .nav-previous:hover, .nav-next:hover, .nav-back:hover {
+            background-color: rgba(95, 158, 160, 0.2);
+            color: var(--highlight-color);
+        }
+
+        /* Footer Styles */
+        .footer {
+            text-align: center;
+            padding: 1rem 0;
+            background-color: var(--secondary-bg);
+            margin-top: 0.5rem;
+        }
+
+        .footer-content {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 0 4rem;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .mobile-menu-toggle {
+                display: block;
+            }
+            
+            .nav-brand {
+                width: 100%;
+                justify-content: space-between;
+            }
+            
+            .nav-links {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                flex-direction: column;
+                align-items: center;
+                background-color: var(--secondary-bg);
+                padding: 0;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.4s ease, padding 0.4s ease;
+                z-index: 10;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+                opacity: 0;
+            }
+            
+            .nav-links.active {
+                max-height: 300px;
+                padding: 1rem 0;
+                opacity: 1;
+            }
+            
+            .nav-link {
+                width: 100%;
+                text-align: center;
+                padding: 0.8rem 0;
+                border-bottom: 1px solid rgba(95, 158, 160, 0.1);
+            }
+            
+            .nav-link:last-child {
+                border-bottom: none;
+            }
+            
+            .nav-link::after {
+                bottom: 5px;
+            }
+
+            .article-title {
+                font-size: 2rem;
+            }
+            
+            .article-meta {
+                gap: 1rem;
+            }
+            
+            .article-body {
+                padding: 1.5rem;
+            }
+            
+            .article-navigation {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .nav-previous, .nav-next, .nav-back {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-brand">
+            <a href="../../index.html">Saksham Sharma <span id="theme-toggle" class="theme-toggle"><i class="fas fa-sun"></i></span></a>
+            <button class="mobile-menu-toggle" aria-label="Toggle navigation menu">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        <div class="nav-links">
+            <a href="../../index.html" class="nav-link">Home</a>
+            <a href="../skills.html" class="nav-link">Skills</a>
+            <a href="../experience.html" class="nav-link">Experience</a>
+            <a href="../projects.html" class="nav-link">Projects</a>
+            <a href="../writings.html" class="nav-link active">Writings</a>
+            <a href="../contact.html" class="nav-link">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="content">
+        <article class="article-container">
+            <!-- Article Header -->
+            <div class="article-header" style="background-image: url('../../images/writing1.jpg');">
+                <div class="article-header-content">
+                    <h1 class="article-title">The Faulty Education System</h1>
+                    <div class="article-meta">
+                        <span><i class="far fa-calendar-alt"></i> Jan 29, 2025</span>
+                        <span><i class="fas fa-code"></i> Thoughts</span>
+                        <!-- Philosophy
+fas fa-brain - Perfect for deep thinking and philosophical concepts
+fas fa-lightbulb - Represents ideas and enlightenment
+fas fa-book-open - Good for philosophical references and wisdom
+Casual Talks
+fas fa-comments - Represents conversation and dialogue
+fas fa-coffee - Perfect for casual, relaxed discussions
+fas fa-users - Good for social commentary or group discussions
+Stream of Consciousness
+fas fa-feather - Represents flowing, free-form writing
+fas fa-wind - Symbolizes the natural flow of thoughts
+fas fa-pen-fancy - Good for creative, expressive writing -->
+                        <span><i class="far fa-clock"></i> 10 min read</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Article Body -->
+            <div class="article-body">
+                <p>Education is the most powerful weapon which you can use to change the world. This famous quote by Nelson Mandela highlights the transformative power of education in shaping the future of society. However, the current education system is plagued with numerous issues that hinder its ability to fulfill this noble purpose. In this article, we will explore some of the key problems with the existing education system and propose potential solutions to address them.</p>
+                
+                <h2>The Rote Learning Conundrum</h2>
+                <p>Rote learning, also known as memorization or cramming, is a common practice in many educational institutions. Students are often required to memorize vast amounts of information without truly understanding the underlying concepts. This approach to learning is detrimental as it promotes surface-level understanding and discourages critical thinking and creativity.</p>
+                <p>Instead of focusing on rote learning, the education system should emphasize conceptual understanding and practical application of knowledge. By encouraging students to think critically, analyze information, and apply their learning in real-world scenarios, we can foster a culture of innovation and problem-solving.
+                    <br>
+                    <br>
+                    <blockquote>Education is not the learning of facts, but the training of the mind to think. - Albert Einstein</blockquote>
+                    <!-- some other inspirational educational quotes by popular science figures -->
+                     <p><p>Education System: the guidelines proposed purposely to correctly guide the wills of the future by ensuring their all round proper development by giving them lectures and lessons ranging from fundamentals to oddly complicated topics that are supposed to be used or be useful in the future and in a hope that it was not a waste of time. forgive me for any inaccuracies, i am sure they are amendable but i think there are more inaccuracies in our system as compared to mine words. this should make a quick intro. </p>
+                     <br>
+                        as we all know that our education system is not good enough but how ? this is the point where many of us fail to answer, indeed it is a hard question, also it is not just our education system that fails so everything already is making sense. we all have a bad habit , a very bad habit , i am talking about people judging each other according to the grades we get not caring about our input work, dedication, topic of interest, circumstances etc. when we meet a fellow student in public , perhaps when we are on a bus, streets , market wherever , when we meet another student or even our friends , we instantly think about their academic scores, which up to this point absolutely makes sense and hints our competitiveness in academics which is nice. it gets bad when the asking person or the highness , the judge just asks the grades and does not show any interest in us by asking us complete questions like what are our areas of interests , what do we have in mind, what have we planned for future or how much did we input to get that output , you know , fortunately a thing called efficiency exists in the world but unfortunately not much of us care about it and this is sad. let me give you all an example to clear your doubts and enhance the understanding. 
+                        <br>
+                        <br>
+                        <i>(Ram and Tim are two friends, they were separated by their academic life. one had to stay in the village and another had to go to the city to continue his further educations. now they are meeting each other unexpectedly in a park in a city restaurant(dont ask me how they got there , quantum mechanics supports the possibility of everything and this is something happens to most of us so lets continue))*</i>
+                        (then their conversation goes but we only care the highlights, now here comes a little problem, dont take this in negatively and if this fictional story coincide to anyone's life then yes i copied form them.) <br><br>
+                        tim asks ram , how he is and after some formality he asks about his scores in his high school final exams , ram replies something average and then tim replies with his shiny flashy grades, tim then fortunately asks how did it go , he asks this before than the other but it really doesn't matter much, now ram is stuck in a formality problem because the question is deep and it wouldn't be really easy to answer the question in short way because he has a lot to explanation but he knows that he gotta respond quick because Tim is not really meaning his question , he is just doing the formality in friends. unfortunately ram decides to close the topic with a simple response "fine". then Tim's mom and dad who were listening to their conversation start to participate in the story as villains. when they hear that ram got average grades but their son got decent score ( little higher than the average ) not knowing what ram was going through in the village , if he had the environment and the opportunity to prepare for the exam , if he had aimed for the high grades , they instantly assume he is worse than their son, yes their son is also a little bad, everyone is a little bad so it works perfectly fine , dont you agree? <br>
+                        for tim, his story was, he moved to the city with his family and they were living in a nice apartment and since his parents were somewhat educated but still old fashioned, they got good jobs in gov offices and life had been pretty easy on them. tim had studied in an expensive college with all sorts of aids like , tuition classes , practice books , past questions, mock tests(the tests that mimic the actual exam) and after months of 10hrs of these everyday and crazy level of work he finally ended with that score, he had teachers to teach him how to memorize all the theories, all the question patterns , he practiced so much that he could literally remember the final answers of the math questions. he became an exemplary student in his school because he did what he was expected to do by the institution and society, his parents are proud and so is his institution. does he represent some students in our class? yes he does, his parents are proud of his hard work and they dont miss a single chance to brag his success, well that is not very bad, it is what most of our parents do , good for them, right? now i want you to write down your answers so that you can not change them afterwards. lets know the ram's side's story ( you know it's me when i use weird English structure lol)
+                        (dont care much about the inaccurate tense because i did not write this in a continuous order, my apologies)
+                        <br>
+                        the harsh reality for ram was, ram's father passed away just a month before the exams and he had to do all the rituals, after the mourning since he was in village he couldn't care much about his health and all the mourning and rituals made him feeble and he got severe fever for a week. also the thing what we have not considered much about is , his areas of interests, ram wanted to be a computer scientist, he wanted to be a researcher in the field of Quantum Computers and since his family is financially unstable and weak he can not afford to get a slow degree like his other friends and also his hunger and internal desire to acquire more and deeper knowledge to understand the new domain of computer and science made him explore further, a little distracted from what others, he is also very logical , analytical and good at problem solving, but this all means nothing when he could not get a flashy grade on that crappy piece of paper?? is his all life a joke? yes i am exaggerating , i need to do that in order to highlight the issue , the issue is now ram is technically not flashy yet has good attributes but is not recognized by most of us because when we meet him ,we ask him just about his grades, when ram goes to apply for jobs , what the interviewer focuses on the first are his grades not his story, capabilities, knowledge. something i forgot to mention is , after a year, they both grew up enough to look for jobs, since tim had memorized his entire syllabus , even the math problems and solutions, he now forgot almost everything and now he lacks the problem solving , analytical and logical skills that he should have developed in his high school all he is left with is a good looking crappy piece of paperworks(resume and gradeshits) and fortunately big companies introduced a new trend in the market and now they understand that there are millions with good looking crappy grades yet the society is struggling so they figured out, someone with good level of current skills and knowledge is what they need ,hence tim couldn't get into top companies so he joined a mid level industry and works fine  while on the other hand, ram appears to be simple and dumb looking with bad grades and no richness at all yet the company developed interest in him and thoroughly went through his life and abilities and realized that he is the exact kind of person they need for the betterment of their company and the society. <br><br>
+                        moral of today's yapping , don't judge someone with their grades , give everyone a chance to prove themselves, if you honestly dont care about me , then dont you dare ask me about my state , status, grades and health. why do i have to allow you to make your foolish judgements on me , they are inaccurate and negative, if you have genuine queries about someone then just let them know and always ask if they have something more to share, i mean a backup story or an explanation, judging someone is not bad, it is necessary but misjudging is bad. thanks for your time, i really dont care about you reading this so it wont make a difference to me anyway! peace!!</p>
+                </p>
+
+                <!-- Article Tags -->
+                <div class="article-tags">
+                    <span class="article-tag">Education</span>
+                    <span class="article-tag">Criticism</span>
+                    <span class="article-tag">Thoughts</span>
+                    <span class="article-tag">Society</span>
+                </div>
+                
+                <!-- Article Navigation -->
+                <div class="article-navigation">
+                    <a href="/pages/writings/writing1.html" class="nav-previous"><i class="fas fa-arrow-left"></i> Previous Writing</a>
+                    <a href="../writings.html" class="nav-back"><i class="fas fa-th-large"></i> All Writings</a>
+                    <a href="/pages/writings/writing3.html" class="nav-next">Next Writing <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2025 Saksham Sharma | All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Theme Toggle Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // DOM Elements
+            const themeToggle = document.getElementById('theme-toggle');
+            const iconElement = themeToggle.querySelector('i');
+            const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+            const navLinks = document.querySelector('.nav-links');
+            
+            // Check if user previously set a theme preference
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme) {
+                document.body.setAttribute('data-theme', savedTheme);
+                updateIcon(savedTheme === 'light', iconElement);
+            }
+            
+            // Toggle theme when clicked
+            themeToggle.addEventListener('click', function() {
+                const currentTheme = document.body.getAttribute('data-theme');
+                const newTheme = currentTheme === 'light' ? '' : 'light';
+                
+                document.body.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+                
+                updateIcon(newTheme === 'light', iconElement);
+            });
+            
+            // Function to update icon based on theme
+            function updateIcon(isLight, icon) {
+                if (isLight) {
+                    icon.classList.remove('fa-sun');
+                    icon.classList.add('fa-moon');
+                } else {
+                    icon.classList.remove('fa-moon');
+                    icon.classList.add('fa-sun');
+                }
+            }
+            
+            // Mobile menu toggle functionality
+            if (mobileMenuToggle) {
+                mobileMenuToggle.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    navLinks.classList.toggle('active');
+                    
+                    const icon = mobileMenuToggle.querySelector('i');
+                    if (icon.classList.contains('fa-bars')) {
+                        icon.classList.remove('fa-bars');
+                        icon.classList.add('fa-times');
+                    } else {
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
+                });
+                
+                // Close menu when clicking outside
+                document.addEventListener('click', function(event) {
+                    const isClickInsideNav = navLinks.contains(event.target);
+                    const isClickOnToggle = mobileMenuToggle.contains(event.target);
+                    
+                    if (!isClickInsideNav && !isClickOnToggle && navLinks.classList.contains('active')) {
+                        navLinks.classList.remove('active');
+                        const icon = mobileMenuToggle.querySelector('i');
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
+                });
+                
+                // Close menu when clicking on a link
+                navLinks.querySelectorAll('.nav-link').forEach(link => {
+                    link.addEventListener('click', function() {
+                        navLinks.classList.remove('active');
+                        const icon = mobileMenuToggle.querySelector('i');
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    });
+                });
+            }
+        });
+    </script>
+</body>
+</html>
