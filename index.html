@@ -7,90 +7,166 @@
     <meta property="og:title" content="Saksham Sharma - Portfolio">
     <meta property="og:description" content="Aspiring AI Engineer | Software Developer | Tech Enthusiast">
     <meta property="og:image" content="https://raw.githubusercontent.com/UnExplainableFish52/mini_port_site/main/preview.jpg">
-    <meta property="og:url" content="https://sakshamsharma.com.np">
+    <meta property="og:url" content="https://saksham.info.np">
+    <meta property="og:site_name" content="Saksham Sharma - Portfolio">
     <meta property="og:type" content="website">
-
-    <!-- Twitter Card for Better Sharing on Twitter -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Saksham Sharma - Portfolio">
-    <meta name="twitter:description" content="Aspiring AI Engineer | Software Developer | Tech Enthusiast">
+    <!-- Twitter Card for Better Sharing on Twitter -->     
+    <meta name="twitter:card" content="summary_large_image">    
+    <meta name="twitter:title" content="Saksham Sharma - Portfolio">    
+    <meta name="twitter:description" content="Aspiring AI Engineer | Software Developer | Tech Enthusiast">    
     <meta name="twitter:image" content="https://raw.githubusercontent.com/UnExplainableFish52/mini_port_site/main/preview.jpg">
 
-
-    <title>Saksham Sharma</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <title>Saksham Sharma</title>    
+    <link rel="stylesheet" href="css/style.css">    
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;500;700&display=swap" rel="stylesheet">    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-
-      <!-- Standard favicon for browsers -->
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <!-- Standard favicon for browsers -->    
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">    
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">    
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
-
-    <!-- Apple Touch Icon for iOS devices -->
+    <!-- Apple Touch Icon for iOS devices -->    
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-
-    <!-- Icons for Android and Windows devices -->
-    <link rel="icon" sizes="192x192" href="android-chrome-192x192.png">
-    <link rel="icon" sizes="512x512" href="android-chrome-512x512.png">
-    <meta name="msapplication-TileImage" content="/mstile-150x150.png">
+    <!-- Icons for Android and Windows devices -->    
+    <link rel="icon" sizes="192x192" href="android-chrome-192x192.png">    
+    <link rel="icon" sizes="512x512" href="android-chrome-512x512.png">    
+    <meta name="msapplication-TileImage" content="/mstile-150x150.png">    
     
+    <!-- Added inline styles for hamburger menu -->
+    <style>
+        /* Mobile menu styles */
+        .hamburger-menu {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            color: inherit;
+            transition: transform 0.3s ease;
+        }
+        
+        .hamburger-menu:focus {
+            outline: none;
+        }
+        
+        .hamburger-menu.active i {
+            transform: rotate(90deg);
+        }
+        
+        /* Media queries for responsive design */
+        @media screen and (max-width: 768px) {
+            .hamburger-menu {
+                display: block;
+            }
+            
+            .nav-links {
+                position: absolute;
+                top: 60px; /* Adjust based on your navbar height */
+                left: 0;
+                right: 0;
+                background-color: var(--bg-color, #ffffff);
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                flex-direction: column;
+                align-items: center;
+                padding: 1rem 0;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.4s ease-out;
+                z-index: 100;
+            }
+            
+            .nav-links.active {
+                max-height: 300px; /* Adjust as needed */
+            }
+            
+            .nav-links a {
+                margin: 0.5rem 0;
+                width: 100%;
+                text-align: center;
+            }
+            
+            .navbar {
+                justify-content: space-between;
+                padding: 0 1rem;
+            }
+        }
+    </style>
 </head>
-<body>
-    <nav class="navbar">
-        <div class="nav-brand">
-            <a href="index.html">Saksham Sharma <span id="theme-toggle" class="theme-toggle"><i class="fas fa-sun"></i></span></a>
-           <!-- here i tried to add a nav menu toggle hamburger bar but it is not working as expected so let them mobile users suffer.
-            <button class="mobile-menu-toggle" aria-label="Toggle navigation menu">
-                <i class="fas fa-bars"></i>
-            </button> -->
+<body>    
+    <nav class="navbar">        
+        <div class="nav-brand">            
+            <a href="index.html">Saksham Sharma <span id="theme-toggle" class="theme-toggle"><i class="fas fa-sun"></i></span></a>           
         </div>
-        <div class="nav-links">
-            <a href="index.html" class="nav-link">Home</a>
-            <a href="pages/skills.html" class="nav-link">Skills</a>
-            <a href="pages/experience.html" class="nav-link">Experiences</a>
-            <a href="pages/projects.html" class="nav-link">Projects</a>
-            <a href="pages/writings.html" class="nav-link">Writings</a>
-            <a href="pages/contact.html" class="nav-link">Contact</a>
-        </div>
+        <!-- Added hamburger menu button -->
+        <button class="hamburger-menu" aria-label="Toggle navigation menu">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="nav-links">            
+            <a href="index.html" class="nav-link">Home</a>            
+            <a href="pages/skills.html" class="nav-link">Skills</a>            
+            <a href="pages/experience.html" class="nav-link">Experiences</a>            
+            <a href="pages/projects.html" class="nav-link">Projects</a>            
+            <a href="pages/writings.html" class="nav-link">Writings</a>            
+            <a href="pages/contact.html" class="nav-link">Contact</a>        
+        </div>    
     </nav>
 
-    <main class="content">
-        <div class="profile-container">
-            <div class="profile-image">
-                <img src="images/saksham00.png" alt="Saksham Sharma">
-            </div>
-            <h1 class="name">Saksham Sharma</h1>
-            <p class="title">An Aspiring Software Engineer 💻 | @ TheIdealDevs</p>
-            <p class="location">Lalitpur, Nepal</p>
-            <p class="bio">Greetings! I'm Saksham Sharma, an ambitious Software Engineer in
-                the making and a passionate technology enthusiast. With a strong
-                foundation in Computer Science and a keen interest in innovation, I
-                thrive on solving complex problems through logical reasoning
-                & creativity. <br> <br> Reach Out to me via:</p>
-            
-            <div class="social-links">
-                <a href="mailto:contactsaksham52@gmail.com" class="social-link"><i class="fas fa-envelope"></i></a>
-                <a href="https://github.com/unexplainablefish52" class="social-link"><i class="fab fa-github"></i></a>
-                <a href="https://www.linkedin.com/in/sakshamsharma52/" class="social-link"><i class="fab fa-linkedin"></i></a>
-                <a href="https://www.facebook.com/UnExplainableFish52?mibextid=ZbWKwL" class="social-link"><i class="fab fa-facebook"></i></a>
-                <a href="https://t.me/unexplainablefish52" class="social-link"><i class="fab fa-telegram"></i></a>
-                <a href="https://saksham.info.np" class="social-link"><i class="fab fa-blogger"></i></a>
+    <main class="content">        
+        <div class="profile-container">            
+            <div class="profile-image">                
+                <img src="images/saksham00.png" alt="Saksham Sharma">            
+            </div>            
+            <h1 class="name">Saksham Sharma</h1>            
+            <p class="title">An Aspiring Software Engineer 💻 | @ TheIdealDevs</p>            
+            <p class="location">Lalitpur, Nepal</p>            
+            <p class="bio">Greetings! I'm Saksham Sharma, an ambitious Software Engineer in                
+                the making and a passionate technology enthusiast. With a strong                
+                foundation in Computer Science and a keen interest in innovation, I                
+                thrive on solving complex problems through logical reasoning                
+                & creativity. <br> <br> Reach Out to me via:</p>                        
+            <div class="social-links">                
+                <a href="mailto:contactsaksham52@gmail.com" class="social-link"><i class="fas fa-envelope"></i></a>                
+                <a href="https://github.com/unexplainablefish52" class="social-link"><i class="fab fa-github"></i></a>                
+                <a href="https://www.linkedin.com/in/sakshamsharma52/" class="social-link"><i class="fab fa-linkedin"></i></a>                
+                <a href="https://www.facebook.com/UnExplainableFish52?mibextid=ZbWKwL" class="social-link"><i class="fab fa-facebook"></i></a>                
+                <a href="https://t.me/unexplainablefish52" class="social-link"><i class="fab fa-telegram"></i></a>                
+                <a href="https://saksham.info.np" class="social-link"><i class="fab fa-blogger"></i></a>            
             </div>
 
-            <a href="https://getresumeofsakshamsharma.tiiny.site/" class="resume-button">Resume</a>
-        </div>
-    </main>
-                              
-    <footer class="footer">
-        <div class="footer-content">
-             <!-- Elfsight Subscription Form | Untitled Subscription Form -->
-             <script src="https://static.elfsight.com/platform/platform.js" async></script>
-             <div class="elfsight-app-a3279f79-5e02-425b-a8f4-ff12ecfbb964" data-elfsight-app-lazy></div>
-            <p>&copy; 2025 Saksham Sharma | All rights reserved.</p>
-        </div>
+            <a href="https://getresumeofsakshamsharma.tiiny.site/" class="resume-button">Resume</a>        
+        </div>    
+    </main>                                  
+    <footer class="footer">        
+        <div class="footer-content">             
+            <!-- Elfsight Subscription Form | Untitled Subscription Form -->             
+            <script src="https://static.elfsight.com/platform/platform.js" async></script>             
+            <div class="elfsight-app-a3279f79-5e02-425b-a8f4-ff12ecfbb964" data-elfsight-app-lazy></div>            
+            <p>&copy; 2025 Saksham Sharma | All rights reserved.</p>        
+        </div>    
     </footer>
 
     <script src="js/main.js"></script>
+    <!-- Added JavaScript for hamburger menu functionality -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburger = document.querySelector('.hamburger-menu');
+            const navLinks = document.querySelector('.nav-links');
+            
+            hamburger.addEventListener('click', function() {
+                // Toggle active class on hamburger and nav-links
+                this.classList.toggle('active');
+                navLinks.classList.toggle('active');
+            });
+            
+            // Close menu when clicking on a nav link
+            const links = document.querySelectorAll('.nav-link');
+            links.forEach(link => {
+                link.addEventListener('click', function() {
+                    hamburger.classList.remove('active');
+                    navLinks.classList.remove('active');
+                });
+            });
+        });
+    </script>
 </body>
 </html>
